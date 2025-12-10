@@ -3,7 +3,7 @@
 `define PTR_WIDTH $clog2(`FIFO_SIZE)
 
 class fifo_common;
-    static string testname="CONCURRENT";
+    static string testname="OVERFLOW";
 	static int N = 16;
 	static mailbox wr_gen2bfm=new();
 	static mailbox rd_gen2bfm=new();
@@ -17,3 +17,4 @@ class fifo_common;
 	static int match,mismatch;
 
 endclass
+
