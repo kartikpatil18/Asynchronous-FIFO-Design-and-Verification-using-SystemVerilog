@@ -2,7 +2,7 @@
 //two differnt clks required for write and read
 
 `define WIDTH 8
-`define FIFO_SIZE 8
+`define FIFO_SIZE 16
 `define PTR_WIDTH $clog2(`FIFO_SIZE)
 
 module asyn_fifo(wr_clk,rd_clk,rst,wr_en,wdata,full,overflow,rd_en,rdata,empty,underflow);	
@@ -91,6 +91,7 @@ module asyn_fifo(wr_clk,rd_clk,rst,wr_en,wdata,full,overflow,rd_en,rdata,empty,u
 	end
 
 endmodule
+
 
 
 
