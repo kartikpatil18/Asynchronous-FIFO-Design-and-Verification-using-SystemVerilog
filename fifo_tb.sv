@@ -4,7 +4,7 @@ module tb;
    fifo_env env;
    bit wr_clk,rd_clk,rst;
    
-   //physical interface
+   //physical interface instance
    fifo_intrf pif(wr_clk,rd_clk,rst);
    
    //DUT instantiation
@@ -20,7 +20,7 @@ module tb;
 				 .empty(pif.empty),
 				 .underflow(pif.underflow));
 
-    //asyn_fifo_assert instantiation
+	//asyn_fifo_assert instantiation (binding with dut)
     bind asyn_fifo asyn_fifo_ass a1(
 	                       .wr_clk(wr_clk),
                            .rd_clk(rd_clk),
@@ -50,8 +50,14 @@ module tb;
 
    initial begin
 	  #1000;
-		  $display("match=%0d,mismatch=%0d",fifo_common::match,fifo_common::mismatch);
+	   //fifo scoreboard logic
+	  $display("match=%0d,mismatch=%0d",fifo_common::match,fifo_common::mismatch);
+	  if(fifo_common::match == `FIFO_SIZE && fifo_common::mismatch == 0)
+	    $display("test is passed");
+	  else $display("test is failed!");
+	   
 	  $finish();
    end
 
   endmodule
+
