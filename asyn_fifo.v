@@ -87,7 +87,7 @@ module asyn_fifo(wr_clk,rd_clk,rst,wr_en,wdata,full,overflow,rd_en,rdata,empty,u
 //	end
 
      // ---------- Read pointer synchronized to write clock domain ----------
-    
+	// Two Stage Synchronizer (reduce metastability)
     always @(posedge wr_clk) begin
         rd_ptr_wr_clk_ff1      <= rd_ptr;            // first stage
         rd_ptr_wr_clk          <= rd_ptr_wr_clk_ff1; // second stage
@@ -118,6 +118,7 @@ module asyn_fifo(wr_clk,rd_clk,rst,wr_en,wdata,full,overflow,rd_en,rdata,empty,u
 	end
 
 endmodule
+
 
 
 
