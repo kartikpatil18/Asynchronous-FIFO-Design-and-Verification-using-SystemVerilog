@@ -17,7 +17,7 @@ class rd_bfm;
 	task drive_tx(rd_tx tx);
        @(vif.rd_bfm_cb);
 	     vif.rd_bfm_cb.rd_en <= tx.rd_en;
-		 wait(vif.rd_bfm_cb.rdata!=0);
+		//wait(vif.rd_bfm_cb.rdata!=0); 
 	     tx.rdata <= vif.rd_bfm_cb.rd_en ? vif.rd_bfm_cb.rdata : 0;
 	     tx.empty <= vif.rd_bfm_cb.empty;
 	     tx.underflow <= vif.rd_bfm_cb.underflow;
